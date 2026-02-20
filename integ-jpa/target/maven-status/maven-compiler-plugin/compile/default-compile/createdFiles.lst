@@ -1,0 +1,15 @@
+geo\marcos\chp7\entities\Wine.class
+geo\marcos\chp7\entities\Supplier.class
+geo\marcos\chp7\entities\OrderItem.class
+geo\marcos\chp7\entities\test\PopulateDemoData.class
+geo\marcos\chp7\entities\Address.class
+geo\marcos\chp7\entities\CustomerOrder.class
+geo\marcos\chp7\entities\test\ServiceFacadeClient.class
+geo\marcos\chp7\entities\BusinessContact.class
+geo\marcos\chp7\entities\test\ServiceFacade.class
+geo\marcos\chp7\entities\InventoryItem.class
+geo\marcos\chp7\entities\WineItem.class
+geo\marcos\chp7\entities\Individual.class
+geo\marcos\chp7\entities\Distributor.class
+geo\marcos\chp7\entities\CartItem.class
+geo\marcos\chp7\entities\Customer.class
