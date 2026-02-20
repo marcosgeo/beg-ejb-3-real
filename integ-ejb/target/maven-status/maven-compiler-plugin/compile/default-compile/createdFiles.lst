@@ -1,0 +1,9 @@
+geo\marcos\chp7\ejbs\StatusMailerBean.class
+geo\marcos\chp7\beans\ISearchFacadeLocal.class
+geo\marcos\chp7\beans\OrderProcessFacadeBean.class
+geo\marcos\chp7\ejbs\OrderProcessingMDBBean.class
+geo\marcos\chp7\beans\SearchFacadeBean.class
+geo\marcos\chp7\beans\IShoppingCartLocal.class
+geo\marcos\chp7\beans\ShoppingCartBean.class
+geo\marcos\chp7\beans\PurchaseOrder.class
+geo\marcos\chp7\beans\CustomerFacadeBean.class
