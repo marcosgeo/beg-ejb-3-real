@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Ejb3Chp7">
+        
+    <wb-module deploy-name="integ-war-v0">
+                
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                
         <dependent-module archiveName="integ-ejb-v0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/integ-ejb/integ-ejb">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
+                
         <dependent-module archiveName="integ-jpa-v0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/integ-jpa/integ-jpa">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
+                
         <dependent-module archiveName="integ-chp6-ejb-v0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/integ-chp6-ejb/integ-chp6-ejb">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
-        <property name="context-root" value="Ejb3Chp7"/>
+                
         <property name="java-output-path" value="/integ-war/target/classes"/>
+        <property name="context-root" value="integ-war"/>
+            
     </wb-module>
+    
 </project-modules>

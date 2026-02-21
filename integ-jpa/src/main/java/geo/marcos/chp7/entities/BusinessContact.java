@@ -2,6 +2,8 @@ package geo.marcos.chp7.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,33 +17,19 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
-/**
- * To create ID generator table "BUSINESS_CONTATCT_ID_GEN":
- *    create table "BUSINESS_CONTATCT_ID_GEN" (
- *      "PRIMARY_KEY_NAME" varcahr(4000) primary key,
- *      "NEXT_ID_VALUE" number(38)
- *    );
- *  
- *  To initialize this table with data for this entity's ID generator
- *  'BusinessContact.id' (starting with value '0'): 
- *    insert into "BUSINESS_CONTATCT_ID_GEN" values ('BusinessContact.id', 0);
- */
 @Entity
+@Access(AccessType.FIELD)
 @Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({
   @NamedQuery(name="BusinessContact.findAll", query="select o from BusinessContact o")
 })
-@Table(name="BUSINESS_CONTACT")
-@TableGenerator(
-  name="BusinessContact_ID_Generator", table="BUSINESS_CONTACT_ID_GEN",
-  pkColumnName="PRIMARY_KEY_NAME", pkColumnValue="BusinessContact.id", valueColumnName="NEXT_ID_VALUE"
-)
+@Table(name="business_contact")
 public class BusinessContact implements Serializable{
   private static final long serialVersionUID = 1L;
   
   @Id
   @Column(nullable=false)
-  @GeneratedValue(strategy=GenerationType.TABLE, generator="BusinessContact_ID_Generator")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
   
   @Column(name="FIRST_NAME", length=4000)

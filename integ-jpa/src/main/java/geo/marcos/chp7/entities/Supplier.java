@@ -9,11 +9,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
   @NamedQuery(name="Supplier.findAll", query="select o from Supplier o")
 })
+@Table(name="supplier")
 public class Supplier extends BusinessContact{
   private static final long serialVersionUID = 1L;
 

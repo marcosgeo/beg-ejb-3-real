@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
   @NamedQuery(name="CartItem.findAll", query="select o from CartItem o")
 })
-@Table(name="CART_ITEM")
+@Table(name="cart_item")
 public class CartItem extends WineItem{
   @Temporal(TemporalType.DATE)
   @Column(name="CREATED_DATE")

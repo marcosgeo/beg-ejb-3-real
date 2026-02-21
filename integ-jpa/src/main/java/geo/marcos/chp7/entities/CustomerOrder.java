@@ -23,31 +23,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-/**
- * To create ID generator table "CUSTOMER_ORDER_ID_GEN":
- *    create table "CUSTOMER_ORDER_ID_GEN" (
- *      "PRIMARY_KEY" varchar(4000) primary key,
- *      "NEXT_ID_VALUE" number(38)
- *    );
- *    
- * To initialize this table with data for this entity's ID generator
- * 'CustomerOrder.id' (starting with value '0'):
- *    insert into "CUSTOMER_ORDER_ID_GEN" values ('CustomerOrder.id', 0);
- */
 @Entity
 @NamedQueries({
   @NamedQuery(name="CustomOrder.findAll", query="select o from CustomOrder o")
 })
-@Table(name="CUSTOMER_ORDER")
-@TableGenerator(name="CustomerOrder_ID_Generator", table="CUSTOMER_ORDER_ID_GEN",
-  pkColumnName="PRIMARY_KEY_NAME", pkColumnValue="CustomerOrder.id", valueColumnName="NEXT_ID_VALUE"
-)
+@Table(name="customer_order")
 public class CustomerOrder implements Serializable{
   private static final long serialVersionUID = 1L;
   
   @Id
   @Column(nullable=false)
-  @GeneratedValue(strategy=GenerationType.TABLE, generator="CustomerOrder_ID_Generator")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
   @Temporal(TemporalType.DATE)
   @Column(name="CREATION_DATE")

@@ -4,12 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
   @NamedQuery(name="Individual.findAll", query="select o from Individual o"),
   @NamedQuery(name="Individual.findById", query="select o from Individual o where o.id = :id")
 })
+@Table(name="individual")
 public class Individual extends Customer {
   private static final long serialVersionUID = 1L;
 

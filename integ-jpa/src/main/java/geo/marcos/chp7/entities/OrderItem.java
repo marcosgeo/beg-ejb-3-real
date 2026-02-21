@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
   @NamedQuery(name="OrderItem.findAll", query="select o from OrderItem o")
 })
-@Table(name="ORDER_ITEM")
+@Table(name="order_item")
 public class OrderItem extends WineItem {
   private static final long serialVersionUID = 1L;
 
