@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
   @NamedQuery(name="Distributor.findAll", query="select o from Distributor o")
 })
+@Table(name="distributor")
 public class Distributor extends Customer {
   private static final long serialVersionUID = 1L;
   @Column(name="COMPANY_NAME", length=4000)

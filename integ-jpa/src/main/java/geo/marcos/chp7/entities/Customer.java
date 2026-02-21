@@ -12,25 +12,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-/**
- * To create ID generator table "CUSTOMER_ID_GEN":
- *    create table "CUSTOMER_I_GEN" (
- *      "PRIMARY_KEY_NAME" varchar(4000) primary key,
- *      "NEXT_ID_VALUE" number(38)
- *  );
- *  
- *  To initialize this table with data for this entity's ID generator 'Customer.id' (
- *  starting with value'0'): insert into "CUSTOMER_ID_GEN" values ('Customer.id', 0);
- */
 @Entity
 @NamedQueries({
   @NamedQuery(name="Customer.findAll", query="select o from Customer o"),
   @NamedQuery(name="Customer.findByEmail", query="select o from Customer o where o.email = :email")
 })
+@Table(name="customer")
 public class Customer extends BusinessContact {
-  private static final long serialVersionUID = 1L;
-
   @Column(length=4000)
   private String email;
 
@@ -41,14 +31,14 @@ public class Customer extends BusinessContact {
   private List<CustomerOrder> customerOrderList;
   
   @OneToMany(cascade= {CascadeType.ALL}, orphanRemoval=true)
-  @JoinTable(name="CUSTOMER_BILLING_ADDRESS", 
+  @JoinTable(name="customer_billing_address", 
     joinColumns=@JoinColumn(name="CUSTOMER_ID"), 
     inverseJoinColumns=@JoinColumn(name="ADDRESS_ID")
   )
   protected List<Address> billingAddressList;
 
   @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
-  @JoinTable(name="CUSTOMER_SHIPPING_ADDRESS",
+  @JoinTable(name="customer_shipping_address",
     joinColumns = @JoinColumn(name="CUSTOMER_ID"),
     inverseJoinColumns=@JoinColumn(name="ADDRESS_ID")
   )
@@ -121,7 +111,7 @@ public class Customer extends BusinessContact {
   }
   
   public CustomerOrder removeCustomerOrder(CustomerOrder customerOrder) {
-    getCustomerOrderList().add(customerOrder);
+    getCustomerOrderList().remove(customerOrder);
     customerOrder.setCustomer(null);
     return customerOrder;
   }

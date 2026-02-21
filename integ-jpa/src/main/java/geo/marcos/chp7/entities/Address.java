@@ -9,28 +9,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
 /**
- * To create ID generator table "ADDRESS_ID_GEN":
- *   create table "ADDRESS_ID_GEN" (
+ * To create ID generator table "address_id_gen":
+ *   create table "address_id_gen" (
  *     "PRIMARY_KEY_NAME" varchar(4000) primary key,
  *     "NEXT_ID_VALUE" number(38)
  *   );
  *   
  * To initialize this table with data for this entity's ID generator
  * 'Address.'id' (starting with value '0'):
+ *    insert into "address_id_gen" values ('Address.id', 0);
  */
 @Entity
 @NamedQueries({@NamedQuery(name="Address.findAll", query="select o from Address o")})
-@TableGenerator(name="Address_ID_Generator", table="ADDRESS_ID_GEN",
-    pkColumnName="PRIMARY_KEY_NAME", pkColumnValue="Address.id", valueColumnName="NEXT_ID_VALUE")
+@Table(name="address")
 public class Address implements Serializable {
   private static final long serialVersionUID = 1L;
   @Id
   @Column(nullable=false)
-  @GeneratedValue(strategy=GenerationType.TABLE, generator="Address_ID_Generator")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
   @Column(length=4000)
   private String city;

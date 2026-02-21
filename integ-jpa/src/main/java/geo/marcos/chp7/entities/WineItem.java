@@ -15,34 +15,18 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-/**
- * To create ID generator table "WINE_ITEM_ID_GEN: 
- *  create table WINE_ITEM_ID_GEN(
- *    PRIMARY_KEY_NAME varchar(4000) primary key,
- *    NEXT_ID_VALUE number(38)
- *  );
- *  
- *  To initialize the table with data for this entity's ID generator
- *  'QineItem.id' (starting with value '0'): 
- *    insert into WINE_ITEM_ID_GEN values ('WineItem.id', 0);
- */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @NamedQueries({
   @NamedQuery(name="WineItem.findAll", query="select o from WineItem o")
 })
-@Table(name="WINE_ITEM")
-@TableGenerator(
-  name="WineItem_ID_Generator", table="WINE_ITEM_ID_GEN", pkColumnName="PRIMARY_KEY_NAME",
-  pkColumnValue="WineItem.id", valueColumnName="NEXT_ID_VALUE"
-)
+@Table(name="wine_item")
 public class WineItem  implements Serializable{
   private static final long serialVersionUID = 1L;
   
   @Id
   @Column(nullable=false)
-  @GeneratedValue(strategy=GenerationType.TABLE, generator="WineItem_ID_Generator")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
   private int quantity;
   private Integer version;

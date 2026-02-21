@@ -14,28 +14,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-/**
- * To create ID generator table "WINE_ID_GEN": 
- *  create table WINE_ID_GEN (
- *    "PRIMARY_KEY_NAME", varchar(4000) primary key,
- *    "NEXT_ID_VALUE" number(38)
- *  );
- *  
- *  To initialize this table with data for this entity's ID generator 'Wine.id'
- *  (starting with value '0'): insert into "WINE_ID_GEN" values ('Wine.id', 0);
- */
 @Entity
 @NamedQueries({
   @NamedQuery(name="Wine.findAll", query="select object o from Wine o"),
   @NamedQuery(name="Wine.findByYear", query="select object(wine) from Wine wine where wine.year=:year"),
   @NamedQuery(name="Wine.findByCountry", query="select object(wine) from Wine wine where wine.country=:country"),
-  @NamedQuery(name="WindfindByVarietal", query="select object(wine) from Wine wine where wine.varietal=:varietal")
+  @NamedQuery(name="Wine.findByVarietal", query="select object(wine) from Wine wine where wine.varietal=:varietal")
 })
-@TableGenerator(name="Wine_ID_Generator", table="WINE_ID_GEN", pkColumnName="PRIMARY_KEY_NAME",
-  pkColumnValue="Wine.id", valueColumnName="NEXT_ID_VALUE"
-)
+@Table(name="wine")
 public class Wine implements Serializable {
   private static final long serialVersionUID = 1L;
   
@@ -45,7 +34,7 @@ public class Wine implements Serializable {
   private String description;
   @Id
   @Column(nullable=false)
-  @GeneratedValue(strategy=GenerationType.TABLE, generator="Wine_ID_Generator")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private int id;
   @Column(nullable=false, length=4000)
   private String name;
@@ -60,7 +49,7 @@ public class Wine implements Serializable {
   @Column(name="YEAR")
   private int year;
   @ManyToMany
-  @JoinTable(name="WINE_SUPPLIER",
+  @JoinTable(name="wine_supplier",
     joinColumns={@JoinColumn(name="WINE_ID", referencedColumnName="ID")},
     inverseJoinColumns={@JoinColumn(name="SUPPLIER_ID", referencedColumnName="ID")}
   )

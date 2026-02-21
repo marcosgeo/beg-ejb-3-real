@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
   @NamedQuery(name="InventoryItem.findAll", query="select o from InventoryItem o"),
   @NamedQuery(name="IngentoryItem.findItemByWine", query="select o from InventoryItem o where o.wine = :wine")
 })
-@Table(name="INVENTORY_ITEM")
+@Table(name="inventory_item")
 public class InventoryItem extends WineItem{
   private static final long serialVersionUID = 1L;
 
